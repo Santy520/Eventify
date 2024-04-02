@@ -10,5 +10,16 @@
     "json": "^11.0.0",
     "mysql2": "^3.9.3",
     "sequelize": "^6.37.2"
-  }
+  },
+  "name": "event-manager-app",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
