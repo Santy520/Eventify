@@ -9,13 +9,13 @@
     "handlebars": "^4.7.8",
     "json": "^11.0.0",
     "mysql2": "^3.9.3",
+    "nodemailer": "^6.9.13",
     "sequelize": "^6.37.2"
   },
   "name": "event-manager-app",
   "description": "",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
