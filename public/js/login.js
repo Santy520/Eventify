@@ -3,13 +3,13 @@
 const newEventHandler = async (e) => {
   e.preventDefault();
 
-  const eventName = document.querySelector('#event-name').ariaValueMax.trim();
-  const eventDesc = document.querySelector('#event-desc').ariaValueMax.trim();
-  const eventLoca = document.querySelector('#event-loca').ariaValueMax.trim();
-  const eventDate = document.querySelector('#event-date').ariaValueMax.trim();
-  const eventTime = document.querySelector('#event-Time').ariaValueMax.trim();
+  const eventName = document.querySelector('#event-name').value.trim();
+  const eventDesc = document.querySelector('#event-desc').value.trim();
+  const eventLoca = document.querySelector('#event-loca').value.trim();
+  const eventDate = document.querySelector('#event-date').value.trim();
+  const eventTime = document.querySelector('#event-time').value.trim();
 
-  if (eventName && eventLoca && eventDate && eventLoca && req.session.logged_in) {
+  if (eventName && eventLoca && eventDate && eventLoca) {
     const response = await fetch (`/api/events`, {
       method: 'POST',
       body: JSON.stringify({ eventName, eventDesc, eventLoca, eventDate, eventTime }),
@@ -26,6 +26,7 @@ const newEventHandler = async (e) => {
   };
 };
 
+// event handler to post new event
 document
     .querySelector('.new-event')
     .addEventListener('submit', newEventHandler)
