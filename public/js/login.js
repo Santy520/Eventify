@@ -9,8 +9,8 @@ const newEventHandler = async (e) => {
   const eventDate = document.querySelector('#event-date').ariaValueMax.trim();
   const eventTime = document.querySelector('#event-Time').ariaValueMax.trim();
 
-  if (eventName && eventLoca && eventDate && eventLoca) {
-    const response = await fetch (`/api/events`, {
+  if (eventName && eventLoca && eventDate && eventLoca && req.session.logged_in) {
+    const response = await fetch (`/api/events`, {git 
       method: 'POST',
       body: JSON.stringify({ eventName, eventDesc, eventLoca, eventDate, eventTime }),
       headers: {
