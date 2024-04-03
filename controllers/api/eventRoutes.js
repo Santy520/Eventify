@@ -1,5 +1,5 @@
 const router = require('express').Router();
-// Required: Import Event model
+const { Event } = require('../../models');
 
 // Localhost:3001/api/events/...
 
@@ -11,7 +11,9 @@ router.post('/', async (req, res) => {
             description: req.body.eventDesc,
             location: req.body.eventLoca,
             date: req.body.eventDate,
-            time: req.body.eventTime
+            time: req.body.eventTime,
+
+            user_id: req.session.user_id,
         });
 
         res.status(200).json(newEvent);
