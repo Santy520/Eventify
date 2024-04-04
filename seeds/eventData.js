@@ -1,4 +1,6 @@
-[
+const { Event } = require('../models');
+
+const eventData = [
   {
     "title": "dummy1Title",
     "description": "dummy1Desc",
@@ -21,3 +23,7 @@
     "time": "dummy3Time"
   }
 ]
+
+const seedEvent = () => Event.bulkCreate(eventData)
+
+module.exports = seedEvent;
