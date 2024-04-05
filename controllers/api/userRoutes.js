@@ -12,11 +12,11 @@ router.post('/login', async (req, res) => {
 
     const userData = await User.findOne({ where: { name: req.body.username } });
     if (!userData) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: 'Invalid username or password' });
     }
     // Compare passwords
     if (req.body.password !== userData.password) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+      return res.status(400).json({ message: 'Invalid username or password' });
     }
 
     req.session.save(() => {
@@ -24,7 +24,7 @@ router.post('/login', async (req, res) => {
       req.session.logged_in = true;
       res.status(200).json({ user_id: userData.id, message: 'Login successful.' });
     });
-    
+
   } catch (err) {
     res.status(500).json(err);
   }
