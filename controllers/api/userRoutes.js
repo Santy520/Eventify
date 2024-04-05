@@ -2,6 +2,8 @@ const router = require ('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 
+// localhost/api/users/...
+
 // login user set handlebar login flags to on
 
 router.post('/login', async (req, res) => {
@@ -29,16 +31,17 @@ router.post('/login', async (req, res) => {
 });
 
 
-// Create new user
+// Create new user 
+// TODO: Implement AUTH
 
 router.post('/signup', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-    // Create user
-    const userData = await User.create({ username, email, password: hashedPassword });
-    // Set session variables
+    const userData = await User.create({
+      name: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    });
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;

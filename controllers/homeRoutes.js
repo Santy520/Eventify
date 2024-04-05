@@ -6,11 +6,11 @@ const router = require('express').Router();
     // Get Request for homepage
 router.get('/', (req, res) => {
   try {
-    
-    if (req.session.logged_in != true) {
-      res.redirect('/login');
-      return;
-    }
+
+    // if (req.session.logged_in != true) {
+    //   res.redirect('/login');
+    //   return;
+    // }
     // GET all posted events
       // const eventDataPull = await Event.findall({
         // include
