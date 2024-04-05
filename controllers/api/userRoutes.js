@@ -5,31 +5,42 @@ const { User } = require('../../models');
 // localhost/api/users/...
 
 // login user set handlebar login flags to on
+// TODO: Implement AUTH
 
 router.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body;
-    // Find user by email
-    const user = await User.findOne({ where: { username } });
-    if (!user) {
+
+    const userData = await User.findOne({ where: { name: req.body.username } });
+    if (!userData) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
     // Compare passwords
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
+    if (req.body.password !== userData.password) {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
-    // Set session variables
+
     req.session.save(() => {
-      req.session.user_id = user.id;
+      req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.status(200).json({ user_id: user.id });
+      res.status(200).json({ user_id: userData.id, message: 'Login successful.' });
     });
+    
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// Logout user
+
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
 // Create new user 
 // TODO: Implement AUTH

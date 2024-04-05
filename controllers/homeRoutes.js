@@ -1,7 +1,7 @@
 const router = require('express').Router();
 // const { Event, User } = require('../models');
 
-// localhost/
+// localhost/...
 
     // Get Request for homepage
 router.get('/', (req, res) => {
