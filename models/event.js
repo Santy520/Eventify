@@ -1,27 +1,45 @@
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-const Event = sequelize.define('Event', {
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false
+class Event extends Model {}
+
+Event.init(
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    time: {
+      type: DataTypes.TIME,
+      allowNull: false
+    }
   },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: true
-  },
-  location: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  date: {
-    type: DataTypes.DATEONLY,
-    allowNull: false
-  },
-  time: {
-    type: DataTypes.TIME,
-    allowNull: false
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'event'
   }
-});
+);
 
 module.exports = Event;
