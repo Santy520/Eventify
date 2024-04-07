@@ -10,13 +10,16 @@ const { signUpMail } = require('../../utils/nodemailer')
 
 router.post('/login', async (req, res) => {
   try {
-
     const userData = await User.findOne({ where: { name: req.body.username } });
     if (!userData) {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
+
     // Compare passwords
-    if (req.body.password !== userData.password) {
+    const checkPassword = (x) => {
+      return bcrypt.compareSync(x.password, userData.password);
+    }
+    if (checkPassword(req.body) == false) {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
 
@@ -48,16 +51,19 @@ router.post('/logout', (req, res) => {
 
 router.post('/signup', async (req, res) => {
   try {
+
+    const hashPass = await bcrypt.hash(req.body.password, 10);
+
     const userData = await User.create({
       name: req.body.username,
       email: req.body.email,
-      password: req.body.password
+      password: hashPass
     });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      signUpMail(userData);
+      // signUpMail(userData); // Nodemailer signup email function
       res.status(200).json(userData);
     });
   } catch (err) {

@@ -20,7 +20,7 @@ User.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: false,
+      unique: false, // Please set to true before deployment
       validate: {
         isEmail:true,
       },
