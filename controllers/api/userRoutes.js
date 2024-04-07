@@ -1,6 +1,7 @@
 const router = require ('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
+const { signUpMail } = require('../../utils/nodemailer')
 
 // localhost/api/users/...
 
@@ -56,6 +57,7 @@ router.post('/signup', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+      signUpMail(userData);
       res.status(200).json(userData);
     });
   } catch (err) {
