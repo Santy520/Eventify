@@ -14,7 +14,7 @@
     margin-top: 2%;
   }
   
-  .main-header {
+  .main-header{
     display: flex;
     /* Forces elements to the next line if they don't fit */
     flex-wrap: wrap;
@@ -22,6 +22,17 @@
     padding: 60px;
     background: lightblue;
     color: #fff;
+  }
+
+  .form {
+    display: flex;
+    /* Forces elements to the next line if they don't fit */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 60px;
+    background: white;
+    color: green;
+    border-radius: 2%;
   }
   
   .card {

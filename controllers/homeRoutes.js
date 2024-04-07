@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
       // const event = eventDataPull.map((event) => event.get({ plain: true }));
 
-    res.render('events');
+    res.render('login');
 
   } catch (err) {
     res.status(500).json(err);
