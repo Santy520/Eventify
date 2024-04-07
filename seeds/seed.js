@@ -4,6 +4,7 @@ const seedEvent = require('./eventData')
 
 // Define the seed function
 const seedDatabase = async () => {
+
   await sequelize.sync({ force: true });
 
   await seedUser();
