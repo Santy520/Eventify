@@ -21,8 +21,12 @@
     "start": "node server.js",
     "seed": "node seeds/seed.js",
     "run-all": "npm test & npm start & npm seed"
+    "watch": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
 }
