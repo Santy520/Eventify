@@ -2,43 +2,57 @@ const router = require ('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 
+// localhost/api/users/...
+
 // login user set handlebar login flags to on
+// TODO: Implement AUTH
 
 router.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
-    // Find user by email
-    const user = await User.findOne({ where: { email } });
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+
+    const userData = await User.findOne({ where: { name: req.body.username } });
+    if (!userData) {
+      return res.status(400).json({ message: 'Invalid username or password' });
     }
     // Compare passwords
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
-      return res.status(400).json({ message: 'Invalid email or password' });
+    if (req.body.password !== userData.password) {
+      return res.status(400).json({ message: 'Invalid username or password' });
     }
-    // Set session variables
+
     req.session.save(() => {
-      req.session.user_id = user.id;
+      req.session.user_id = userData.id;
       req.session.logged_in = true;
-      res.status(200).json({ user_id: user.id });
+      res.status(200).json({ user_id: userData.id, message: 'Login successful.' });
     });
+
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+// Logout user
 
-// Create new user
+router.post('/logout', (req, res) => {
+  if (req.session.logged_in) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
+
+// Create new user 
+// TODO: Implement AUTH
 
 router.post('/signup', async (req, res) => {
   try {
-    const { username, email, password } = req.body;
-    // Hash password
-    const hashedPassword = await bcrypt.hash(password, 10);
-    // Create user
-    const userData = await User.create({ username, email, password: hashedPassword });
-    // Set session variables
+    const userData = await User.create({
+      name: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    });
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;

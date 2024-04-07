@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Event } = require('../../models');
 
-// Localhost:3001/api/events/...
+// localhost/api/events/...
 
 // Post event details -
 router.post('/', async (req, res) => {
