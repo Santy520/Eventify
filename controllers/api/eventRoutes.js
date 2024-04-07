@@ -22,4 +22,25 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.get('/', (req, res) => {
+    try {
+  
+      // if (req.session.logged_in != true) {
+      //   res.redirect('/login');
+      //   return;
+      // }
+      // GET all posted events
+        // const eventDataPull = await Event.findall({
+          // include
+        // });
+  
+        // const event = eventDataPull.map((event) => event.get({ plain: true }));
+  
+      res.render('Events');
+  
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
 module.exports = router;

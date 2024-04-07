@@ -19,7 +19,8 @@ router.get('/', withAuth, async (req, res) => {
 
       // const event = eventDataPull.map((event) => event.get({ plain: true }));
 
-    res.render('events', { logged_in: req.session.logged_in });
+    res.render('homepage', { logged_in: req.session.logged_in });
+
 
   } catch (err) {
     res.status(500).json(err);
