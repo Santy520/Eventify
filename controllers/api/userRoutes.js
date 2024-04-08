@@ -25,7 +25,8 @@ router.post('/signup', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      signUpMail(userData); // Nodemailer signup email function
+      // Nodemailer signup email function
+      // signUpMail(userData); 
       res.status(200).json(userData);
     });
   } catch (err) {
