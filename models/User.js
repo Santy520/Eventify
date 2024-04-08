@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+// const Subscription = require('./subscription');
 
 class User extends Model {}
 
@@ -20,7 +21,7 @@ User.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: false, // Please set to true before deployment
+      unique: false, 
       validate: {
         isEmail:true,
       },
