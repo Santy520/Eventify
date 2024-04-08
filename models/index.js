@@ -1,6 +1,22 @@
+// Import required modules and models
+const sequelize = require('../config/database');
 const User = require('./User');
-const Event = require('./event');
+const Event = require('./Event');
+const Subscription = require('./subscription');
 
-// THROUGH tables and ownership relationships need to be implemented here
+// Define the association between User and Event
+User.hasMany(Subscription, {
+    foreignKey: 'userId' 
+});
+Subscription.belongsTo(User, {
+    foreignKey: 'userId' 
+});
 
-module.exports = { User, Event }
+Event.hasMany(Subscription, {
+    foreignKey: 'eventId' 
+});
+Subscription.belongsTo(Event, {
+    foreignKey: 'eventId' 
+});
+
+module.exports = { User, Event, Subscription };
