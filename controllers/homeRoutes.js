@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const withAuth = require('../utils/auth')
-const { Event } = require('../models');
+const withAuth = require('../utils/auth');
+const { Event, Subscription } = require('../models');
 
 // localhost/...
 
@@ -8,12 +8,22 @@ const { Event } = require('../models');
 router.get('/', withAuth, async (req, res) => {
   try {
     // Will be an array
-    const eventsData = await Event.findAll();
-    const events = eventsData.map((x) => x.get({ plain: true }));
-    // events = { id, title, description, location, date, time }
+    const subsData = await Subscription.findAll({ 
+      where: {
+        userId: req.session.user_id
+      },
+      include: {
+          model: Event,
+          attributes: ['id', 'title', 'description', 'location', 'date', 'time']
+      }
+    });
+    const subs = subsData.map((x) => x.get({ plain: true }));
+
+    console.log(subs)
+
     res.render('homepage', { 
       logged_in: req.session.logged_in,
-      events
+      subs
      });
   } catch (err) {
     res.status(500).json(err);

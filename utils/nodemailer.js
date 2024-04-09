@@ -13,13 +13,13 @@ const transporter = nodeMailer.createTransport({
 const signUpMail = (createUser) => {
   try {
     const htmlOutput = `
-    <p>Thank you for signing into our Event Manager!</p>
-    <h3>Details:</h3>
-    <ul>
-      <li>Name: ${createUser.name}</li>
-      <li>Email: ${createUser.email}</li>
-    </ul>
-    `;
+      <p>Thank you for signing into our Event Manager!</p>
+      <h3>Details:</h3>
+      <ul>
+        <li>Name: ${createUser.name}</li>
+        <li>Email: ${createUser.email}</li>
+      </ul>
+      `;
  
     const main = async () => {
       // send mail with defined transport object

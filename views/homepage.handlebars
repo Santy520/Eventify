@@ -1,1 +1,8 @@
-PLACEHOLDER FOR SUBSCRIBED EVENTS
+<h2>Subscribed Events:</h2>
+{{#if subs}}
+  {{#each subs as |sub|}}
+  {{> sub-details}}
+  {{/each}}
+{{else}}
+<p>Please subscribe to an event!</p>
+{{/if}}

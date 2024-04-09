@@ -1,10 +1,11 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth');
 const { Event } = require('../../models');
 
 // localhost/api/events/...
 
 // Post event details -
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newEvent = await Event.create({
       title: req.body.eventTitle,
@@ -23,7 +24,7 @@ router.post('/', async (req, res) => {
 });
 
 // Delete event
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const eventDelete = await Event.destroy({
       where: {
