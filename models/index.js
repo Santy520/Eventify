@@ -1,7 +1,7 @@
 // Import required modules and models
 const sequelize = require('../config/connection');
 const User = require('./User');
-const Event = require('./Event');
+const Event = require('./event');
 const Subscription = require('./Subscription');
 
 // Define the association between User and Event
