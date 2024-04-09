@@ -2,16 +2,16 @@ const { Subscription } = require('../models');
 
 const subscriptionData = [
   {
-    userID: 1,
-    eventID: 1
+    userId: 1,
+    eventId: 1
   },
   {
-    userID: 2,
-    eventID: 2
+    userId: 2,
+    eventId: 2
   },
   {
-    userID: 3,
-    eventID: 3
+    userId: 3,
+    eventId: 3
   }
 ]
 
