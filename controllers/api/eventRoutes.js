@@ -1,46 +1,62 @@
 const router = require('express').Router();
-const { Event } = require('../../models');
+const withAuth = require('../../utils/auth');
+const { Event, Subscription } = require('../../models');
 
 // localhost/api/events/...
 
-// Post event details -
-router.post('/', async (req, res) => {
-    try {
-        const newEvent = await Event.create({
-            title: req.body.eventName,
-            description: req.body.eventDesc,
-            location: req.body.eventLoca,
-            date: req.body.eventDate,
-            time: req.body.eventTime,
+// Create new event and subscribe to it
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newEvent = await Event.create({
+      title: req.body.eventTitle,
+      description: req.body.eventDesc,
+      location: req.body.eventLoca,
+      date: req.body.eventDate,
+      time: req.body.eventTime,
+      // user_id: req.session.user_id, PLEASE REVISIT IN FUTURE
+    });
 
-            user_id: req.session.user_id,
-        });
+    // Retrieve data from newly created event, then use the event id subscribe the user to the new event
+    const eventData = await Event.findOne({
+      where: {
+        title: req.body.eventTitle,
+        description: req.body.eventDesc,
+        location: req.body.eventLoca,
+        date: req.body.eventDate,
+        time: req.body.eventTime
+      }
+    })
+    const eventDataTrim = eventData.get({ plain:true })
 
-        res.status(200).json(newEvent);
+    const newSub = await Subscription.create({
+      userId: req.session.user_id,
+      eventId: eventDataTrim.id
+    });
+
+    res.status(200).json({ newEvent, newSub });
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-router.get('/', (req, res) => {
-    try {
+// Delete event
+router.delete('/:id', withAuth, async (req, res) => {
+  try {
+    const eventDelete = await Event.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
   
-      // if (req.session.logged_in != true) {
-      //   res.redirect('/login');
-      //   return;
-      // }
-      // GET all posted events
-        // const eventDataPull = await Event.findall({
-          // include
-        // });
-  
-        // const event = eventDataPull.map((event) => event.get({ plain: true }));
-  
-      res.render('Events');
-  
-    } catch (err) {
-      res.status(500).json(err);
+    if (!eventDelete) {
+      res.status(404).json({ message: 'No project found with this id!' });
+      return;
     }
-  });
+
+    res.status(200).json(eventDelete);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+})
 
 module.exports = router;

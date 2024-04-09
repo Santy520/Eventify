@@ -15,20 +15,12 @@
   <div class="flex-column justify-space-around">
     <header class="main-header display-flex justify-space-between align-center p-2">
       <nav>
-        <div class="nav-wrapper">
-          <a href="#!" class="brand-logo"><span role="img" aria-label="Plans">📊</span> Eventify </a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-              {{#if logged_in}}
-              <li><a href="/profile">Profile</a></li>
-              <li><a href="#" id="logout">Logout</a></li>
-              {{else}}
-              <li><a href="/login">Login</a></li>
-              <li><a href="/signup">Signup</a></li>
-              {{/if}}
-              <li><a href="/events">Events</a></li>
-            </ul>
-        </div>
+        <!-- Conditionally render login or logout links -->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{/if}}
+        <a href="/events">events</a>
       </nav>
 
 <ul class="sidenav" id="mobile-demo">
