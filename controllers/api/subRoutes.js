@@ -8,11 +8,11 @@ const { Subscription } = require('../../models');
 router.post('/', withAuth, async (req, res) => {
   // req.body = { eventId }
   try {
-    const subData = await Subscription.create({
+    const newSub = await Subscription.create({
       userId: req.session.user_id,
       eventId: req.body.eventId
     });
-    res.status(200).json(subData);
+    res.status(200).json(newSub);
   } catch (err) {
     res.status(400).json(err);
   }

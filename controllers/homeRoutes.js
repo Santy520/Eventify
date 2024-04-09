@@ -60,7 +60,7 @@ router.get('/events/:id', withAuth, async (req, res) => {
 });
 
 // Form for posting event
-router.get('/test', withAuth, async (req, res) => {
+router.get('/newEvent', withAuth, async (req, res) => {
   try {
     res.render('event-post', { 
       logged_in: req.session.logged_in
