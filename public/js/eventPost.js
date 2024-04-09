@@ -1,5 +1,4 @@
-// TODO: Match references to HTML/handlebars
-
+// Takes values from form and makes a post requests for events
 const newEventHandler = async (e) => {
   e.preventDefault();
   const eventTitle = document.querySelector('#event-title').value.trim();
@@ -32,7 +31,7 @@ const newEventHandler = async (e) => {
   };
 };
 
-// event handler to post new event
+// Event handler to post new event
 document
     .querySelector('.new-event')
     .addEventListener('submit', newEventHandler)

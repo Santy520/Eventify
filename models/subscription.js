@@ -9,13 +9,14 @@ Subscription.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true
+      autoIncrement: true,
+      unique: true
     },
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'User',
+        model: 'user',
         key: 'id'
       }
     },
@@ -23,7 +24,7 @@ Subscription.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Event',
+        model: 'event',
         key: 'id'
       }
     }
