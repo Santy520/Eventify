@@ -1,5 +1,4 @@
 const subToEvent = async (e) => {
-  console.log("TEST")
   if (e.target.hasAttribute('data-id')) {
     const eventId = e.target.getAttribute('data-id');
 
