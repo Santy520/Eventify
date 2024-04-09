@@ -51,6 +51,18 @@ router.get('/events/:id', withAuth, async (req, res) => {
   }
 });
 
+// Post event form
+router.get('/test', withAuth, async (req, res) => {
+  try {
+    res.render('event-post', { 
+      logged_in: req.session.logged_in
+     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Login page
 router.get('/login', (req, res) => {
   if (req.session.logged_in) { // If logged in, redirects user to homepage
     res.redirect('/');    
