@@ -22,6 +22,8 @@ const subToEvent = async (e) => {
   }
 }
 
-document
-    .querySelector('.sub-button')
-    .addEventListener('click', subToEvent)
+// Applies event listener to multiple items with the same sub-button class
+const elements = document.querySelectorAll('.sub-button');
+elements.forEach(element => {
+  element.addEventListener('click', subToEvent);
+});
