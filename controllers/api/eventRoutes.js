@@ -7,15 +7,13 @@ const { Event } = require('../../models');
 router.post('/', async (req, res) => {
     try {
         const newEvent = await Event.create({
-            title: req.body.eventName,
+            title: req.body.eventTitle,
             description: req.body.eventDesc,
             location: req.body.eventLoca,
             date: req.body.eventDate,
             time: req.body.eventTime,
-
-            user_id: req.session.user_id,
+            // user_id: req.session.user_id, PLEASE REVISIT IN FUTURE
         });
-
         res.status(200).json(newEvent);
     } catch (err) {
         res.status(400).json(err);
