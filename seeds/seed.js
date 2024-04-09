@@ -3,17 +3,19 @@ const seedUser = require('./userData');
 const seedEvent = require('./eventData');
 const seedSubscription = require('./subscriptionData');
 
-// Define the seed function
 const seedDatabase = async () => {
 
   await sequelize.sync({ force: true });
+  console.log('\n----- DATABASE SYNCED -----\n');
 
   await seedUser();
+  console.log('\n----- USER DATA SEEDED -----\n');
 
   await seedEvent();
+  console.log('\n----- EVENT DATA SEEDED -----\n');
 
-  // currently not working
-  // await seedSubscription(); 
+  await seedSubscription(); 
+  console.log('\n----- SUBSCRIPTION DATA SEEDED -----\n');
 
   process.exit(0);
 };

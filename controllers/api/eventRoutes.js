@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { Event } = require('../../models');
+const withAuth = require('../../utils/auth');
+const { Event, Subscription } = require('../../models');
 
 // localhost/api/events/...
 
-// Post event details -
-router.post('/', async (req, res) => {
+// Create new event and subscribe to it
+router.post('/', withAuth, async (req, res) => {
   try {
     const newEvent = await Event.create({
       title: req.body.eventTitle,
@@ -15,15 +16,31 @@ router.post('/', async (req, res) => {
       // user_id: req.session.user_id, PLEASE REVISIT IN FUTURE
     });
 
-    res.status(200).json(newEvent);
+    // Retrieve data from newly created event, then use the event id subscribe the user to the new event
+    const eventData = await Event.findOne({
+      where: {
+        title: req.body.eventTitle,
+        description: req.body.eventDesc,
+        location: req.body.eventLoca,
+        date: req.body.eventDate,
+        time: req.body.eventTime
+      }
+    })
+    const eventDataTrim = eventData.get({ plain:true })
 
+    const newSub = await Subscription.create({
+      userId: req.session.user_id,
+      eventId: eventDataTrim.id
+    });
+
+    res.status(200).json({ newEvent, newSub });
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
 // Delete event
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const eventDelete = await Event.destroy({
       where: {

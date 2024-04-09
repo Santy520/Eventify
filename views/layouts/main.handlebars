@@ -16,11 +16,11 @@
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
+        <a href="/events">All Events</a>
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <a href="/profile">Profile</a> |
+        <button class="no-button" id="logout">Logout</button>
         {{/if}}
-        <a href="/events">events</a>
       </nav>
     </header>
     <main class="container container-fluid mt-5">

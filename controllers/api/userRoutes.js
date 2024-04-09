@@ -1,7 +1,8 @@
 const router = require ('express').Router();
 const bcrypt = require('bcrypt');
+const withAuth = require('../../utils/auth');
 const { User } = require('../../models');
-const { signUpMail } = require('../../utils/nodemailer')
+const { signUpMail } = require('../../utils/nodemailer');
 
 // localhost/api/users/...
 
@@ -33,8 +34,6 @@ router.post('/signup', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-module.exports = router;
 
 // Login user with login flags
 router.post('/login', async (req, res) => {
@@ -69,7 +68,7 @@ router.post('/login', async (req, res) => {
 });
 
 // Logout user
-router.post('/logout', (req, res) => {
+router.post('/logout', withAuth, (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -78,3 +77,5 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+module.exports = router;
