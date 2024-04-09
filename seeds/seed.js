@@ -1,6 +1,7 @@
 const sequelize = require('../config/connection');
 const seedUser = require('./userData');
-const seedEvent = require('./eventData')
+const seedEvent = require('./eventData');
+const seedSubscription = require('./subscriptionData');
 
 // Define the seed function
 const seedDatabase = async () => {
@@ -10,6 +11,9 @@ const seedDatabase = async () => {
   await seedUser();
 
   await seedEvent();
+
+  // currently not working
+  // await seedSubscription(); 
 
   process.exit(0);
 };
