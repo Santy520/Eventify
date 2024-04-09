@@ -4,6 +4,7 @@ const User = require('./User');
 const Event = require('./event');
 const Subscription = require('./subscription');
 
+
 // Define the association between User and Event
 User.hasMany(Subscription, {
     foreignKey: 'userId' 
