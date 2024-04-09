@@ -19,8 +19,6 @@ router.get('/', withAuth, async (req, res) => {
     });
     const subs = subsData.map((x) => x.get({ plain: true }));
 
-    console.log(subs)
-
     res.render('homepage', { 
       logged_in: req.session.logged_in,
       subs

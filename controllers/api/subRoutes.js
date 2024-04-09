@@ -4,7 +4,7 @@ const { Subscription } = require('../../models');
 
 // localhost/api/subs/...
 
-// Create a subscription to an event ( NEED TESTING )
+// Create a subscription to an event
 router.post('/', withAuth, async (req, res) => {
   // req.body = { eventId }
   try {
@@ -18,7 +18,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// Delete a subscription of user to an event ( NEED TESTING )
+// Delete a subscription of user to an event
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const subData = await Subscription.destroy({
@@ -28,6 +28,7 @@ router.delete('/:id', withAuth, async (req, res) => {
       res.status(404).json({ message: 'User subscription data does not exist' });
       return;
     }
+
     res.status(200).json(subData);
   } catch (err) {
     res.status(500).json(err);
