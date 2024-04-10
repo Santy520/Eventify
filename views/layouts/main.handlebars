@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Manager</title>
-    <link rel="stylesheet" href="/css/jass.css">
     {{!-- <link rel="stylesheet" href="/css/style.css"> --}}
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -16,17 +15,17 @@
     <header class="main-header display-flex justify-space-between align-center p-2">
       <nav>
         <div class="nav-wrapper">
-          <a href="#!" class="brand-logo"><span role="img" aria-label="Plans">📊</span> Eventify </a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="/" class="brand-logo"><span role="img" aria-label="Plans">📊</span> Eventify </a>
+          <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
+              <li><a href="/events">All Events</a></li>
             {{#if logged_in}}
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="#" id="logout">Logout</a></li>
+              <li><a href="/profile">Profile</a></li>
+              <li><a href="#" id="logout">Logout</a></li>
             {{else}}
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Signup</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/signup">Signup</a></li>
             {{/if}}
-            <li><a href="/events">Events</a></li>
           </ul>
         </div>
       </nav>
