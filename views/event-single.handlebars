@@ -1,11 +1,14 @@
-<main>
-    <h3>{{event.title}}</h3>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{event.title}}</span>
     <p>Description: {{event.description}}</p>
     <p>Location: {{event.location}}</p>
     <p>Date: {{event.date}}</p>
     <p>Time: {{event.time}}</p>
-
-    <button class="delete-button" data-id="{{event.id}}">DELETE</button>
-</main>
+  </div>
+  <div class="card-action">
+    <button class="btn waves-effect waves-light delete-button" data-id="{{event.id}}" type="button">DELETE</button>
+  </div>
+</div>
 
 <script src="/js/eventSingle.js"></script>

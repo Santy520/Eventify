@@ -1,7 +1,7 @@
 <section class="card hoverable">
-  <div class="#ffebee red lighten-5 rounded"> 
+  <div class="#ffebee red lighten-5 rounded">
     <div class="card-content">
-      <a href="/events/{{id}}" class="teal-text text-darken-4"> 
+      <a href="/events/{{id}}" class="teal-text text-darken-4">
         <span class="card-title">{{title}}</span>
         <p>Location: {{location}}</p>
         <p>Date: {{date}}</p>
@@ -9,5 +9,12 @@
       </a>
       <button class="sub-button" data-id="{{id}}" type="click">Subscribe</button>
     </div>
+    <div class="card-action">
+          <button class="waves-effect waves-light btn sub-button" data-id="{{id}}">Subscribe</button>
+        </div>
   </div>
 </section>
+
+<script src="/js/eventSingle.js"></script>
+
+
