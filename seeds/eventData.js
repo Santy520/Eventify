@@ -2,25 +2,25 @@ const { Event } = require('../models');
 
 const eventData = [
   {
-    title: "dummy1Title",
-    description: "dummy1Desc",
-    location: "dummy1Location",
+    title: "Web Development Networking Event",
+    description: "Meet people in your industry! Sponspored by NotRealTech",
+    location: "5859 Auer Crossroad, South Kristoffer, New Jersey 38874-9959 ",
     date: "2024-05-01",
-    time: "01:01:01"
+    time: "09:00:01"
   },
   {
-    title: "dummy2Title",
-    description: "dummy2Desc",
-    location: "dummy2Location",
+    title: "Wildcats Vs Trojans Championship Match ",
+    description: "Come join us and support your local wildcats!",
+    location: "548 Jone Garden, Camden, New Jersey 08102", 
     date: "2024-05-02",
-    time: "02:02:02"
+    time: "12:00:02"
   },
   {
-    title: "dummy3Title",
-    description: "dummy3Desc",
-    location: "dummy3Location",
+    title: "Stacey's Surprise Party 🎉🎉🎉",
+    description: "Shhhh, it's a secret",
+    location: "1585 Duke Lane, Branchburg, New Jersey, 08876",
     date: "2024-05-03",
-    time: "03:03:03"
+    time: "18:00:03"
   }
 ]
 

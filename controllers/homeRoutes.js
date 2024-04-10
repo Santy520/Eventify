@@ -50,9 +50,33 @@ router.get('/events/:id', withAuth, async (req, res) => {
     const eventData = await Event.findByPk(req.params.id);
     const event = eventData.get({ plain: true });
     // event = { id, title, description, location, date, time }
+
+    const attendantsData = await Subscription.findAll({
+      where: {
+        eventId: event.id
+      },
+      include: {
+        model: User,
+        attributes: ['id','name']
+      }
+    });
+    let attendants = attendantsData.map((x) => x.get({ plain: true }));
+
+    for (let index = 0; index < attendants.length; index++) {
+      const element = attendants[index];
+      if (element.userId === req.session.user_id) {
+        attendants.splice(index, 1);
+      }
+    }
+
+    if (attendants.length === 0) {
+      attendants = null;
+    }
+
     res.render('event-single', { 
       logged_in: req.session.logged_in,
-      event
+      event,
+      attendants
      });
   } catch (err) {
     res.status(500).json(err);
@@ -70,15 +94,44 @@ router.get('/newEvent', withAuth, async (req, res) => {
   }
 });
 
-// Profile page (INCOMPLETE)
+// Profile page
 router.get('/profile', withAuth, async (req, res) => {
   try {
-    const userData = await User.findByPk(req.session.user_id);
-    const user = userData.get({ plain: true })
+    const profileData = await User.findByPk(req.session.user_id);
+    const profile = profileData.get({ plain: true })
   
+    const compareId = (user) => {
+      return user.id == req.session.user_id
+    }
+
+    const checkId = compareId(profile)
+
     res.render('profile', { 
       logged_in: req.session.logged_in,
-      user
+      profile,
+      checkId
+     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Other user's profile page
+router.get('/profile/:id', withAuth, async (req, res) => {
+  try {
+    const profileData = await User.findByPk(req.params.id);
+    const profile = profileData.get({ plain: true })
+  
+    const compareId = (user) => {
+      return user.id == req.session.user_id
+    }
+
+    const checkId = compareId(profile)
+
+    res.render('profile', { 
+      logged_in: req.session.logged_in,
+      profile,
+      checkId
      });
   } catch (err) {
     res.status(500).json(err);

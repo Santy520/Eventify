@@ -13,7 +13,7 @@ const transporter = nodeMailer.createTransport({
 const signUpMail = (createUser) => {
   try {
     const htmlOutput = `
-      <p>Thank you for signing into our Event Manager!</p>
+      <p>Thank you for signing up to Eventify!</p>
       <h3>Details:</h3>
       <ul>
         <li>Name: ${createUser.name}</li>

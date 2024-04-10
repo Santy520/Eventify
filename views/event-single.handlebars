@@ -4,9 +4,21 @@
   <div class="card-content">
     <span class="card-title">{{event.title}}</span>
     <p>Description: {{event.description}}</p>
+    <br>
     <p>Location: {{event.location}}</p>
     <p>Date: {{event.date}}</p>
     <p>Time: {{event.time}}</p>
+    <br>
+    Other subscribed members:
+    {{#if attendants}}
+      <ul>
+      {{#each attendants as |attendant|}}
+        <a href="/profile/{{user.id}}"><li>{{user.name}}</li></a>
+      {{/each}}
+      </ul>
+    {{else}}
+      <p>No users subscribed</p>
+    {{/if}}
   </div>
   <div class="card-action">
     <button class="btn waves-effect waves-light delete-button" data-id="{{event.id}}" type="button">DELETE</button>

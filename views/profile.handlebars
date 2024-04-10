@@ -6,10 +6,14 @@
         <div class="col s12 m12">
             <div class="card hoverable"> 
                 <div class="card-content center-align"> 
-                    <h2>User Profile</h2> 
+                  {{#if checkId}}
+                    <h2>Your Profile</h2> 
+                  {{else}}
+                    <h4>Viewing Other User's Profile</h4>
+                  {{/if}}
                     <i class="material-icons large teal-text text-darken-4">account_circle</i> 
-                    <span class="card-title">Username: {{user.name}}</span>
-                    <p>Email: {{user.email}}</p>
+                    <span class="card-title">Username: {{profile.name}}</span>
+                    <p>Email: {{profile.email}}</p>
                 </div>
             </div>
         </div>
