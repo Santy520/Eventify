@@ -7,8 +7,8 @@
     {{!-- <link rel="stylesheet" href="/css/style.css"> --}}
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css"  media="screen,projection"/>
+    <!-- Materialize CSS -->
+    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection">
 </head>
 <body>
   <div class="flex-column justify-space-around">
@@ -40,31 +40,27 @@
         {{/if}}
         <li><a href="/events">Events</a></li>
       </ul>
-
     </header>
+
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      
-    </footer>
-  </div>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
     <script src="/js/userLogout.js"></script>
   {{/if}}
-<!--JavaScript at end of body for optimized loading-->
-<script type="text/javascript" src="/js/materialize.min.js"></script>  
-<!-- Initialize sidenav -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {});
-  });
-</script>
-</body>
 
-</html>
+  <!-- Materialize JavaScript -->
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  
+  <!-- Initialize sidenav -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, {});
+    });
+  </script>
+</body>
 </html>
