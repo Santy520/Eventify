@@ -1,39 +1,44 @@
-<h3>Post a new Event</h3>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card hoverable rounded">
+        <div class="card-content">
+          <h4 class="center-align">Post a New Event</h4>
 
-<form class="form new-event">
-
-  <div class="form-group">
-    <label for="event-title">Title:</label>
-    <input class="form-input" type="text" id="event-title" />
+          <form class="form new-event">
+            <div class="input-field">
+              <input id="event-title" type="text" class="validate">
+              <label for="event-title">Title</label>
+            </div>
+            <div class="input-field">
+              <input id="event-desc" type="text" class="validate">
+              <label for="event-desc">Description</label>
+            </div>
+            <div class="input-field">
+              <input id="event-loca" type="text" class="validate">
+              <label for="event-loca">Location</label>
+            </div>
+            <div class="input-field">
+              <input id="event-date" type="text" class="datepicker">
+              <label for="event-date">Date</label>
+            </div>
+            <div class="input-field">
+              <input id="event-time" type="text" class="timepicker">
+              <label for="event-time">Time</label>
+            </div>
+            <div class="form-group center-align">
+              <button class="btn waves-effect waves-light" type="submit">Post Event</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="event-desc">Description:</label>
-    <input class="form-input" type="text" id="event-desc" />
-  </div>
-
-  <div class="form-group">
-    <label for="event-loca">Location:</label>
-    <input class="form-input" type="text" id="event-loca" />
-  </div>
-
-  <div class="form-group">
-    <label for="event-date">Date:</label>
-    <input type="text" class="datepicker" id="event-date">
-  </div>
-
-  <div class="form-group">
-    <label for="event-time">Time:</label>
-    <input type="text" class="timepicker" id="event-time">
-  </div>
-
-  <div class="form-group">
-
-    <button class="btn btn-primary" type="submit">Post Event</button>
-
-  </div>
-
-</form>
 
 <!-- Materialize JavaScript -->
 <script type="text/javascript" src="/js/materialize.min.js"></script>
