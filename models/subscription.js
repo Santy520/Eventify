@@ -15,6 +15,7 @@ Subscription.init(
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: 'compositeIndex',
       references: {
         model: 'user',
         key: 'id'
@@ -23,6 +24,7 @@ Subscription.init(
     eventId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      unique: 'compositeIndex',
       references: {
         model: 'event',
         key: 'id'
