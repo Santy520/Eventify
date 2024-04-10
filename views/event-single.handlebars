@@ -13,7 +13,7 @@
     {{#if attendants}}
       <ul>
       {{#each attendants as |attendant|}}
-        <li>{{user.name}}</li>
+        <a href="/profile/{{user.id}}"><li>{{user.name}}</li></a>
       {{/each}}
       </ul>
     {{else}}
