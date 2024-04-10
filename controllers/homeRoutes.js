@@ -73,8 +73,6 @@ router.get('/events/:id', withAuth, async (req, res) => {
       attendants = null;
     }
 
-    console.log(attendants)
-
     res.render('event-single', { 
       logged_in: req.session.logged_in,
       event,
