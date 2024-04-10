@@ -16,13 +16,13 @@
   </div>
 
   <div class="form-group">
-    <label for="event-date">Date(YYYY-MM-DD):</label>
-    <input class="form-input" type="text" id="event-date" />
+    <label for="event-date">Date:</label>
+    <input type="text" class="datepicker" id="event-date">
   </div>
 
   <div class="form-group">
-    <label for="event-time">Time(FORMAT: hh:mm:ss):</label>
-    <input class="form-input" type="text" id="event-time" />
+    <label for="event-time">Time:</label>
+    <input type="text" class="timepicker" id="event-time">
   </div>
 
   <div class="form-group">
@@ -30,5 +30,28 @@
   </div>
 
 </form>
+
+<!-- Materialize JavaScript -->
+<script type="text/javascript" src="/js/materialize.min.js"></script>
+
+<!-- Initialize datepicker -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems, {
+      format: "yyyy-mm-dd"
+    });
+  });
+</script>
+
+<!-- Initialize timepicker -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.timepicker');
+    var instances = M.Timepicker.init(elems, {
+      twelveHour: false
+    });
+  });
+</script>
 
 <script src="/js/eventPost.js"></script>
