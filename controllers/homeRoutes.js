@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
-const { Event, Subscription } = require('../models');
+const { Event, Subscription, User } = require('../models');
 
 // localhost/...
 
@@ -73,8 +73,12 @@ router.get('/newEvent', withAuth, async (req, res) => {
 // Profile page (INCOMPLETE)
 router.get('/profile', withAuth, async (req, res) => {
   try {
+    const userData = await User.findByPk(req.session.user_id);
+    const user = userData.get({ plain: true })
+  
     res.render('profile', { 
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      user
      });
   } catch (err) {
     res.status(500).json(err);
