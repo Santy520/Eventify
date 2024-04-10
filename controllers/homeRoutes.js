@@ -50,9 +50,35 @@ router.get('/events/:id', withAuth, async (req, res) => {
     const eventData = await Event.findByPk(req.params.id);
     const event = eventData.get({ plain: true });
     // event = { id, title, description, location, date, time }
+
+    const attendantsData = await Subscription.findAll({
+      where: {
+        eventId: event.id
+      },
+      include: {
+        model: User,
+        attributes: ['name']
+      }
+    });
+    let attendants = attendantsData.map((x) => x.get({ plain: true }));
+
+    for (let index = 0; index < attendants.length; index++) {
+      const element = attendants[index];
+      if (element.userId === req.session.user_id) {
+        attendants.splice(index, 1);
+      }
+    }
+
+    if (attendants.length === 0) {
+      attendants = null;
+    }
+
+    console.log(attendants)
+    
     res.render('event-single', { 
       logged_in: req.session.logged_in,
-      event
+      event,
+      attendants
      });
   } catch (err) {
     res.status(500).json(err);

@@ -12,6 +12,14 @@ const subscriptionData = [
   {
     userId: 3,
     eventId: 3
+  },
+  {
+    userId: 1,
+    eventId: 3
+  },
+  {
+    userId: 1,
+    eventId: 2
   }
 ]
 
