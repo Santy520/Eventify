@@ -27,7 +27,7 @@ router.post('/signup', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       // Nodemailer signup email function
-      // signUpMail(userData); 
+      //signUpMail(userData); 
       res.status(200).json(userData);
     });
   } catch (err) {

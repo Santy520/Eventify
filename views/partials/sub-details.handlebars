@@ -1,9 +1,12 @@
-<section class="card">
-  <a href="/events/{{event.id}}">
-    <h3>{{event.title}}</h3>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title">{{event.title}}</span>
     <p>Location: {{event.location}}</p>
     <p>Date: {{event.date}}</p>
     <p>Time: {{event.time}}</p>
-  </a>
-  <button class="unsub-button" data-id="{{id}}" type="click">Unsubscribe</button>
-</section>
+  </div>
+  <div class="card-action">
+    <a href="/events/{{event.id}}">View Details</a>
+    <button class="btn waves-effect waves-light unsub-button" data-id="{{id}}" type="button">Unsubscribe</button>
+  </div>
+</div>
