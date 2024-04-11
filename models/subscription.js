@@ -12,6 +12,7 @@ Subscription.init(
       autoIncrement: true,
       unique: true
     },
+    // compositeIndex prevents entries from having the same combination of userId and eventId
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,

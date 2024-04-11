@@ -1,6 +1,10 @@
 
   # Eventify
-  [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Santy520/Event-Manager-app Santy520, RyanMoises5, GibinMGeorge /Eventify)
+  ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+  
+  https://github.com/Santy520/Event-Manager-app 
+
+  Authors:&ensp; Santy520, RyanMoises5, GibinMGeorge
   
   # Description
   
@@ -20,11 +24,11 @@
   
   # Installation
   
-  The following necessary dependencies must be installed to run the application properly: Must run an NPM Install within your terminal, run a source schema.sql, run node seeds/seed.js and lastly run the project using node server.js
+  Must run an npm install within your terminal, run a source schema.sql, run node seeds/seed.js and lastly run the project using npm start
   
   # Usage
   
-  This application is used for This app is an Event Manager.
+  This app is an Event Manager.
   
   # License
   

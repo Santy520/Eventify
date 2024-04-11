@@ -22,11 +22,11 @@ const signUpMail = (createUser) => {
       `;
  
     const main = async () => {
-      // send mail with defined transport object
+      // Send mail with defined transport object
       const info = await transporter.sendMail({
-        from: '"Nodemailer-P2G1" <project2group1ryan@gmail.com>', // sender address
+        from: '"Nodemailer-P2G1" <project2group1ryan@gmail.com>', // Sender address
         to: createUser.email, // list of receivers
-        subject: "Nodemailer Tester", // Subject line
+        subject: "Nodemailer Eventify", // Subject line
         text: "Hello world?", // plain text body
         html: htmlOutput, // html body
       });

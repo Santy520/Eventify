@@ -1,4 +1,4 @@
-// Takes values from form and makes a post requests for events
+// Gathers values from form and makes a post requests for events
 const newEventHandler = async (e) => {
   e.preventDefault();
   const eventTitle = document.querySelector('#event-title').value.trim();
