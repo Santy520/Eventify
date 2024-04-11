@@ -4,7 +4,7 @@
   
   https://github.com/Santy520/Event-Manager-app 
 
-  Authors: Santy520, RyanMoises5, GibinMGeorge
+  Authors:&ensp; Santy520, RyanMoises5, GibinMGeorge
   
   # Description
   

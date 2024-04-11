@@ -15,6 +15,7 @@ const deleteSub = async (e) => {
   }
 }
 
+// Applies event listener to multiple items with the same unsub-button class
 const elements = document.querySelectorAll('.unsub-button');
 elements.forEach(element => {
   element.addEventListener('click', deleteSub);

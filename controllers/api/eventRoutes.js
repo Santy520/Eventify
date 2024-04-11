@@ -13,10 +13,10 @@ router.post('/', withAuth, async (req, res) => {
       location: req.body.eventLoca,
       date: req.body.eventDate,
       time: req.body.eventTime,
-      // user_id: req.session.user_id, PLEASE REVISIT IN FUTURE
     });
 
-    // Retrieve data from newly created event, then use the event id subscribe the user to the new event
+    // Retrieve data from newly created event
+    // Then use the event id to subscribe the user to the new event
     const eventData = await Event.findOne({
       where: {
         title: req.body.eventTitle,

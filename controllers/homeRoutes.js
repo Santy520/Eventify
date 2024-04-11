@@ -51,6 +51,7 @@ router.get('/events/:id', withAuth, async (req, res) => {
     const event = eventData.get({ plain: true });
     // event = { id, title, description, location, date, time }
 
+    // Gathers all other users subscribed to an event and displays it on the page
     const attendantsData = await Subscription.findAll({
       where: {
         eventId: event.id
@@ -69,6 +70,7 @@ router.get('/events/:id', withAuth, async (req, res) => {
       }
     }
 
+    // If no other users, change variable to null to allow easier handling in handlebars
     if (attendants.length === 0) {
       attendants = null;
     }
@@ -100,10 +102,10 @@ router.get('/profile', withAuth, async (req, res) => {
     const profileData = await User.findByPk(req.session.user_id);
     const profile = profileData.get({ plain: true })
   
+    // Checks if user owns the profile page
     const compareId = (user) => {
       return user.id == req.session.user_id
     }
-
     const checkId = compareId(profile)
 
     res.render('profile', { 
@@ -121,11 +123,11 @@ router.get('/profile/:id', withAuth, async (req, res) => {
   try {
     const profileData = await User.findByPk(req.params.id);
     const profile = profileData.get({ plain: true })
-  
+    
+    // Checks if user owns the profile page
     const compareId = (user) => {
       return user.id == req.session.user_id
     }
-
     const checkId = compareId(profile)
 
     res.render('profile', { 
@@ -140,7 +142,8 @@ router.get('/profile/:id', withAuth, async (req, res) => {
 
 // Login page
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) { // If logged in, redirects user to homepage
+  // If logged in, redirects user to homepage
+  if (req.session.logged_in) { 
     res.redirect('/');    
   }
   res.render('login')
